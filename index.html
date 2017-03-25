@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Yêu hay không ?</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+    <style>
+        h1 {
+            margin-bottom: 150px;
+        }
+
+        .panel {
+            margin-top: 10px;
+        }
+
+        .btn {
+            position: absolute;
+        }
+
+        .btn_co {
+            left: 40%;
+            bottom: 10%;
+        }
+
+        .btn_khong {
+            left: 50%;
+            bottom: 10%;
+        }
+
+        .panel-body {
+            position: relative;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            var num = 1;
+            $('.btn').mouseenter(function () {
+                moveButton($(this));
+            });
+
+            $(document).keydown(function (objEvent) {
+                if (objEvent.keyCode == 9) {  //tab pressed
+                    objEvent.preventDefault(); // stops its action
+                }
+            });
+
+            function moveButton(btn) {
+                if (btn.hasClass('btn_khong') && num == 1) {
+                    btn.css('bottom', '50%');
+                    num = 2;
+                    return;
+                }
+                if (btn.hasClass('btn_khong') && num == 2) {
+                    btn.css('bottom', '10%');
+                    num = 3;
+                    return;
+                }
+                if (btn.hasClass('btn_khong') && num == 3) {
+                    btn.css('left', '40%');
+                    $('.btn_co').css('left', '50%');
+                    num = 4;
+                    return;
+                }
+
+                if (btn.hasClass('btn_khong') && num == 4) {
+                    btn.css('left', '50%');
+                    $('.btn_co').css('left', '40%');
+                    num = 1;
+                    return;
+                }
+            }
+        });
+
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <div class="col-xs-12 text-center">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h1>Em có yêu anh không?</h1>
+                <button class="btn btn_co btn-success" data-toggle="modal" data-target="#myModal">Có</button>
+                <button class="btn btn_khong btn-danger">Không</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                Anh biết mà, anh cũng yêu em rất là nhiều :3 <3 !!!
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
